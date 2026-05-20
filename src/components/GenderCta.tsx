@@ -1,10 +1,18 @@
+"use client";
+
 import { CHECKOUT_MEN, CHECKOUT_WOMEN } from "@/lib/checkout";
+import {
+  trackPurchaseClick,
+  type ButtonLocation,
+  type PurchaseGender,
+} from "@/lib/analytics";
 
 type GenderCtaProps = {
   size?: "default" | "large";
   className?: string;
   showLabel?: boolean;
   variant?: "default" | "urgent";
+  location: ButtonLocation;
 };
 
 const sizeMap = {
@@ -20,11 +28,16 @@ const sizeMap = {
   },
 };
 
+function handleClick(gender: PurchaseGender, location: ButtonLocation) {
+  trackPurchaseClick(gender, location);
+}
+
 export function GenderCta({
   size = "default",
   className = "",
   showLabel = true,
   variant = "default",
+  location,
 }: GenderCtaProps) {
   const s = sizeMap[size];
   const isUrgent = variant === "urgent";
@@ -54,6 +67,7 @@ export function GenderCta({
           href={CHECKOUT_MEN}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => handleClick("men", location)}
           className={`btn-cta-primary inline-flex flex-col items-center justify-center rounded-full font-extrabold text-cosmic-950 shadow-xl transition hover:scale-[1.04] active:scale-[0.97] ${s.btn}`}
         >
           <span>{menLabel}</span>
@@ -65,6 +79,7 @@ export function GenderCta({
           href={CHECKOUT_WOMEN}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => handleClick("women", location)}
           className={`btn-cta-secondary inline-flex flex-col items-center justify-center rounded-full border-2 border-violet-glow/60 bg-violet-glow/25 font-extrabold text-white shadow-xl shadow-violet-glow/20 transition hover:scale-[1.04] hover:bg-violet-glow/40 active:scale-[0.97] ${s.btn}`}
         >
           <span>{womenLabel}</span>

@@ -1,6 +1,7 @@
 "use client";
 
 import { CHECKOUT_MEN, CHECKOUT_WOMEN } from "@/lib/checkout";
+import { trackPurchaseClick } from "@/lib/analytics";
 
 export function StickyBar() {
   return (
@@ -13,6 +14,7 @@ export function StickyBar() {
           href={CHECKOUT_MEN}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackPurchaseClick("men", "sticky")}
           className="btn-cta-primary flex flex-1 items-center justify-center rounded-full py-3 text-sm font-extrabold text-cosmic-950"
         >
           גברים ←
@@ -21,6 +23,7 @@ export function StickyBar() {
           href={CHECKOUT_WOMEN}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackPurchaseClick("women", "sticky")}
           className="btn-cta-secondary flex flex-1 items-center justify-center rounded-full border-2 border-violet-glow/50 bg-violet-glow/30 py-3 text-sm font-extrabold text-white"
         >
           נשים ←

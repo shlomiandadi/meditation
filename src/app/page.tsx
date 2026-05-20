@@ -165,7 +165,7 @@ export default function Home() {
                 ))}
               </div>
 
-              <GenderCta size="large" variant="urgent" />
+              <GenderCta size="large" variant="urgent" location="hero" />
               <p className="mx-auto mt-4 max-w-sm text-sm font-medium text-gold-400/90">
                 👆 לחצו על הכפתור המתאים לכם — וקבלו גישה תוך דקות
               </p>
@@ -248,6 +248,7 @@ export default function Home() {
             <ActionBanner
               headline="מוכנים לשבור את הלופ?"
               subline="14 מדיטציות מחכות לכם — בחרו גברים או נשים והתחילו עכשיו."
+              location="outcomes_banner"
             />
           </div>
         </section>
@@ -436,6 +437,7 @@ export default function Home() {
             <ActionBanner
               headline="עדיין מתלבטים? תנו לעצמכם 14 הזדמנויות לשנות."
               subline="לחיצה אחת — ואתם בפנים. בלי המתנה."
+              location="objections_banner"
             />
           </div>
         </section>
@@ -469,7 +471,7 @@ export default function Home() {
             </Reveal>
 
             <Reveal delay={1}>
-              <GenderCta size="large" variant="urgent" />
+              <GenderCta size="large" variant="urgent" location="purchase" />
               <p className="mx-auto mt-6 max-w-md text-sm font-semibold text-gold-400">
                 כל יום שאתה דוחה — המוח ממשיך להריץ את אותה תוכנה.
                 <br />
@@ -520,7 +522,7 @@ export default function Home() {
               <p className="mb-8 text-sm text-white/50">
                 אל תחכו ל&quot;יום שיהיה לכם זמן&quot; — התחילו היום.
               </p>
-              <GenderCta size="large" variant="urgent" />
+              <GenderCta size="large" variant="urgent" location="footer" />
             </Reveal>
           </div>
         </section>

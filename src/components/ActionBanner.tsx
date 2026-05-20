@@ -1,12 +1,14 @@
 import { GenderCta } from "@/components/GenderCta";
 import { Reveal } from "@/components/Reveal";
+import type { ButtonLocation } from "@/lib/analytics";
 
 type ActionBannerProps = {
   headline: string;
   subline?: string;
+  location: ButtonLocation;
 };
 
-export function ActionBanner({ headline, subline }: ActionBannerProps) {
+export function ActionBanner({ headline, subline, location }: ActionBannerProps) {
   return (
     <Reveal>
       <div className="relative mx-auto max-w-3xl overflow-hidden rounded-3xl border border-gold-500/30 bg-gradient-to-b from-gold-500/10 via-cosmic-800/80 to-cosmic-900/90 px-6 py-10 text-center shadow-2xl shadow-gold-500/10 md:px-10 md:py-12">
@@ -27,7 +29,12 @@ export function ActionBanner({ headline, subline }: ActionBannerProps) {
           {subline && (
             <p className="mx-auto mb-6 max-w-lg text-white/70">{subline}</p>
           )}
-          <GenderCta size="default" showLabel={false} variant="urgent" />
+          <GenderCta
+            size="default"
+            showLabel={false}
+            variant="urgent"
+            location={location}
+          />
         </div>
       </div>
     </Reveal>
