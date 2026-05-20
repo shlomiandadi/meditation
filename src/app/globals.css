@@ -1,0 +1,246 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cosmic-950: #0a0812;
+  --color-cosmic-900: #12101c;
+  --color-cosmic-800: #1e1a2e;
+  --color-cosmic-700: #2d2640;
+  --color-gold-400: #e8c872;
+  --color-gold-500: #d4a853;
+  --color-gold-600: #b8923f;
+  --color-violet-glow: #7c5cbf;
+  --font-sans: "Heebo", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cosmic-950);
+  color: #f0edf5;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-gold-500) 40%, transparent);
+  color: white;
+}
+
+/* ── Background effects ── */
+.glow-orb {
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-violet-glow) 40%, transparent) 0%,
+    transparent 70%
+  );
+  animation: float-orb 8s ease-in-out infinite;
+}
+
+.glow-orb-gold {
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-gold-500) 30%, transparent) 0%,
+    transparent 70%
+  );
+  animation: float-orb 10s ease-in-out infinite reverse;
+}
+
+@keyframes float-orb {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px, 15px) scale(0.95);
+  }
+}
+
+@keyframes drift {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(20px);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-gold-500) 55%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 14px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes grid-move {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(60px);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce-subtle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-gold-400) 60%, transparent);
+  animation: drift linear infinite;
+  pointer-events: none;
+}
+
+.btn-cta-primary {
+  background: linear-gradient(
+    110deg,
+    #b8923f 0%,
+    #f5e6b8 25%,
+    #d4a853 50%,
+    #f5e6b8 75%,
+    #b8923f 100%
+  );
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite, pulse-ring 2.5s ease-out infinite;
+}
+
+.btn-cta-secondary {
+  animation: pulse-ring 2.5s ease-out infinite 0.4s;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.7s ease-out,
+    transform 0.7s ease-out;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 {
+  transition-delay: 0.1s;
+}
+.reveal-delay-2 {
+  transition-delay: 0.2s;
+}
+.reveal-delay-3 {
+  transition-delay: 0.3s;
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #f5e6b8 0%, #d4a853 50%, #b8923f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-glass {
+  background: color-mix(in srgb, var(--color-cosmic-800) 60%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-gold-500) 15%, transparent);
+  backdrop-filter: blur(12px);
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card-glass:hover {
+  border-color: color-mix(in srgb, var(--color-gold-500) 35%, transparent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px color-mix(in srgb, var(--color-violet-glow) 15%, transparent);
+}
+
+.section-center {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 48rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  text-align: center;
+}
+
+.prose-center p {
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
