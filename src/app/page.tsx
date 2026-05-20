@@ -1,6 +1,7 @@
 import { ActionBanner } from "@/components/ActionBanner";
 import { BackgroundEffects } from "@/components/BackgroundEffects";
 import { GenderCta } from "@/components/GenderCta";
+import { PromoVideo } from "@/components/PromoVideo";
 import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/SectionHeading";
 import { StickyBar } from "@/components/StickyBar";
@@ -154,6 +155,10 @@ export default function Home() {
             </Reveal>
 
             <Reveal delay={2}>
+              <PromoVideo />
+            </Reveal>
+
+            <Reveal delay={3}>
               <div className="mx-auto mb-8 flex max-w-2xl flex-wrap justify-center gap-2 md:gap-3">
                 {TRUST_ITEMS.map((item) => (
                   <span
@@ -174,7 +179,7 @@ export default function Home() {
               </p>
             </Reveal>
 
-            <Reveal delay={3}>
+            <Reveal>
               <p className="mx-auto mt-12 max-w-xl border-t border-white/10 pt-10 text-base italic leading-relaxed text-white/70 md:text-lg">
                 אנשים לא נכשלים כי הם חלשים.
                 <br />
