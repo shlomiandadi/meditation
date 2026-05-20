@@ -170,13 +170,18 @@ body {
   animation: bounce-subtle 2s ease-in-out infinite;
 }
 
-/* Scroll reveal */
+/* Scroll reveal — visible by default (SSR-safe), hidden only off-screen after JS */
 .reveal {
-  opacity: 0;
-  transform: translateY(32px);
+  opacity: 1;
+  transform: translateY(0);
   transition:
     opacity 0.7s ease-out,
     transform 0.7s ease-out;
+}
+
+.reveal.reveal-hidden:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(32px);
 }
 
 .reveal.is-visible {
